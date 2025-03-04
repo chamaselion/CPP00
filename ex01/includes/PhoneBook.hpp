@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:53:50 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/04 13:43:04 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:30:15 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 
 	int		get_number_of_contacts() const;
 	int		get_contact_id() const;
-	Contact	get_contact(int index) const;
+	Contact&	get_contact(int index);
 
 	void	set_number_of_contacts(int number);
 	void	set_contact_id(int id);

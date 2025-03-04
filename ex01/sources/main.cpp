@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:34:56 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/04 14:14:26 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:32:56 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	std::string	cmd;
 	int			id;
 
-	id = 1;
+	id = 0;
 	std::cout << "\033[2J\033[1;1H";
 	std::cout << "Welcome to PhoneBook!\n";
 
@@ -38,7 +38,7 @@ int	main(void)
 		if (cmd == "ADD" && id <= 8)
 			phonebook.add_contact(id);
 		if (cmd == "SEARCH")
-		    phonebook.print_contacts();
+		    phonebook.search_contact();
 		if (cmd == "EXIT")
 		{
 			break ;
