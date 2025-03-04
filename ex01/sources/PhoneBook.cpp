@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:32:14 by bszikora          #+#    #+#             */
-/*   Updated: 2025/02/28 20:16:18 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/04 13:09:24 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,71 +104,42 @@ int validate_number_string(const std::string &str)
 int get_contact_info(std::string &fn, std::string &ln, std::string &n, std::string &pn, std::string &ds)
 {
 	std::string temp;
-	while(1)
-	{
-		std::cout << "Please enter your first name:\n";
-		std::cin >> temp;
-		if (validate_letter_string(temp) == 0)
-		{
-			fn = temp;
-			temp.clear();
-			break ;
-		}
-		temp.clear();
-	}
+	std::string output[5];
+	std::string prompt[5];
+	int 		state = 0;
 
-	while (1)
+	output[0] = fn; output[1] = ln; output[2] = n; output[3] = pn; output[4] = ds;
+	prompt[0] = "Please enter your first name:\n";
+	prompt[1] = "Please enter your last name:\n";
+	prompt[2] = "Please enter your nickname:\n"; 
+	prompt[3] = "Please enter your phone number:\n";
+	prompt[4] = "Please enter your darkest secret:\n";
+	
+	while (state < 5)
 	{
-		std::cout << "Please enter your last name:\n";
-		std::cin >> temp;
-		if (validate_letter_string(temp) == 0)
+		while(1)
 		{
-			ln = temp;
+			std::cout << prompt[state];
+			std::cin >> temp;
+			if (state <= 2 && validate_letter_string(temp) == 0)
+				break;
+			if (state == 3 && validate_number_string(temp) == 0)
+				break;
+			if (state == 4 && validate_mixed_string(temp) == 0)
+				break;
 			temp.clear();
-			break;
 		}
+		output[state] = temp;
 		temp.clear();
-	}
+		state++;
+    }
 
-	while(1)
-	{
-		std::cout << "Please enter your nickname:\n";
-		std::cin >> temp;
-		if (validate_letter_string(temp) == 0)
-		{
-			n = temp;
-			temp.clear();
-			break;
-		}
-		temp.clear();
-	}
-
-	while(1)
-	{
-		std::cout << "Please enter your phone number:\n";
-		std::cin >> temp;
-		if (validate_number_string(temp) == 0)
-		{
-			pn = temp;
-			temp.clear();
-			break;
-		}
-		temp.clear();
-	}
-
-	while(1)
-	{
-		std::cout << "Please enter your darkest secret:\n";
-		std::cin >> temp;
-		if (validate_mixed_string(temp) == 0)
-		{
-			ds = temp;
-			temp.clear();
-			break;
-		}
-		temp.clear();
-	}
-	return 0;
+	fn = output[0];
+	ln = output[1];
+	n = output[2];
+	pn = output[3];
+	ds = output[4];
+	return (0);
 }
 
 void PhoneBook::add_contact(int id)
