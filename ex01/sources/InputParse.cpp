@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:42:14 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/04 13:42:33 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:20:17 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,3 +126,4 @@ int ask_contact_info(std::string &fn, std::string &ln, std::string &n, std::stri
 	fn = output[0]; ln = output[1]; n = output[2]; pn = output[3]; ds = output[4];
 	return (0);
 }
+contacts[contact_id]
