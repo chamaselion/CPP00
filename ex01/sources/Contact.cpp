@@ -1,17 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contacts.cpp                                       :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 13:20:19 by bszikora          #+#    #+#             */
-/*   Updated: 2025/02/28 13:40:35 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:41:31 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <Contact.hpp>
+
+Contact::Contact()
+{
+}
+
+Contact::~Contact()
+{
+}
 
 std::string Contact::get_first_name() const {return this->first_name;}
 std::string Contact::get_last_name() const {return this->last_name;}

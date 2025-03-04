@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:53:50 by bszikora          #+#    #+#             */
-/*   Updated: 2025/02/28 19:19:07 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:48:49 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
 	void add_contact(int id);
 	void search_contact();
 	void print_contacts();
-	void print_contact();
+	void print_contact(int id);
 };
 
 # endif
