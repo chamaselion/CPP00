@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:32:14 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/04 17:31:57 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:25:17 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,28 @@ void		PhoneBook::set_contact(int index, const Contact &contact) {this->contacts[
 
 void PhoneBook::add_contact(int id)
 {
-	// For contacts
-	Contact		new_contact;
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
-	// For phonebook
-	int contact_id = id;
-	
-	ask_contact_info(first_name, last_name, nickname, phone_number, darkest_secret);
-	this->contacts[contact_id].set_first_name(first_name);
-	this->contacts[contact_id].set_last_name(last_name);
-	this->contacts[contact_id].set_nickname(nickname);
-	this->contacts[contact_id].set_phone_number(phone_number);
-	this->contacts[contact_id].set_darkest_secret(darkest_secret);
-	this->contacts[contact_id].set_id(id);
-	this->set_contact(contact_id, new_contact);
-	this->set_number_of_contacts(this->get_number_of_contacts() + 1);
+    Contact		new_contact;
+    std::string	first_name;
+    std::string	last_name;
+    std::string	nickname;
+    std::string	phone_number;
+    std::string	darkest_secret;
+    int		index;
+    
+    index = (id - 1) % 8;
+    
+    ask_contact_info(first_name, last_name, nickname, phone_number, darkest_secret);
+    new_contact.set_first_name(first_name);
+    new_contact.set_last_name(last_name);
+    new_contact.set_nickname(nickname);
+    new_contact.set_phone_number(phone_number);
+    new_contact.set_darkest_secret(darkest_secret);
+    new_contact.set_id(index);
+    
+    this->set_contact(index, new_contact);
+    
+    if (this->get_number_of_contacts() < 8)
+        this->set_number_of_contacts(this->get_number_of_contacts() + 1);
 }
 
 void PhoneBook::print_contact(int id)
