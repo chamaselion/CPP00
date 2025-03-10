@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:27:25 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/10 13:50:57 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:11:29 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,32 @@ void Account::displayAccountsInfos( void )
 	std::cout << ";deposits" << _totalNbDeposits << ";withdrawals" << _totalNbWithdrawals << "\n";
 }
 
+void Account::makeDeposit( int deposit )
+{
+	int p_amount = _amount;
+	_totalNbDeposits++;
+	_nbDeposits++;
+	_totalAmount += deposit;
+	_amount += deposit;
+}
+
+
+bool	Account::makeWithdrawal(int withdrawal)
+{
+	if (withdrawal > _amount)
+		return false;
+	int	p_amount = _amount;
+	_nbWithdrawals++;
+	_totalNbWithdrawals++;
+	_amount -= withdrawal;
+	_totalAmount -= withdrawal;
+	return true;
+}
+
+int Account::checkAmount( void ) const {return _amount;}
+
+void Account::displayStatus( void ) const
+{
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";deposits:";
+	std::cout << _nbDeposits << ";withdrawals:" << _nbWithdrawals << "\n";
+}
