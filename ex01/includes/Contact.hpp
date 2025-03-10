@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:55:55 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/04 17:04:00 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/10 11:58:26 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ public:
 	std::string get_darkest_secret() const;
 	int			get_id() const;
 	// Setter
-	void set_first_name(const std::string &first_name);
-	void set_last_name(const std::string &last_name);
-	void set_nickname(const std::string &nickname);
-	void set_phone_number(const std::string &phone_number);
-	void set_darkest_secret(const std::string &darkest_secret);
-	void set_id(const int &id);
+	void 		set_first_name(const std::string &first_name);
+	void 		set_last_name(const std::string &last_name);
+	void 		set_nickname(const std::string &nickname);
+	void 		set_phone_number(const std::string &phone_number);
+	void 		set_darkest_secret(const std::string &darkest_secret);
+	void 		set_id(const int &id);
 };
 
 
