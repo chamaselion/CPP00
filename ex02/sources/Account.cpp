@@ -6,12 +6,13 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:27:25 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/10 14:11:29 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:13:21 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
 
 Account::Account()
 {
@@ -60,4 +61,14 @@ void Account::displayStatus( void ) const
 {
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";deposits:";
 	std::cout << _nbDeposits << ";withdrawals:" << _nbWithdrawals << "\n";
+}
+
+void Account::_displayTimestamp( void )
+{
+	char time[20];
+	time_t current;
+	
+	std::time(&current);
+	std::strftime(time, sizeof(time), "%Y%m%d", std::localtime(&current));
+	std::cout << time;
 }
