@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:32:14 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/05 13:25:17 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:20:16 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,23 @@ void PhoneBook::add_contact(int id)
 
 void PhoneBook::print_contact(int id)
 {
+	std::cout << "\033[2J\033[1;1H";
+	std::cout << "---------------\n";
 	std::cout << "Last name: " << std::endl << this->get_contact(id).get_last_name() << std::endl;
+	std::cout << "---------------\n";
 	std::cout << "First name: " << std::endl << this->get_contact(id).get_first_name() << std::endl;
+	std::cout << "---------------\n";
 	std::cout << "Nickname: " << std::endl << this->get_contact(id).get_nickname() << std::endl;
+	std::cout << "---------------\n";
 	std::cout << "Phone number: " << std::endl << this->get_contact(id).get_phone_number() << std::endl;
+	std::cout << "---------------\n";
 	std::cout << "Darkest secret: " << std::endl <<  this->get_contact(id).get_darkest_secret() << std::endl;
+	std::cout << "---------------\n";
+	std::string buffer;
+	std::cin.ignore(32767, '\n');
+	std::cout << "Press ENTER to continue\n";
+	std::getline(std::cin, buffer);
+	std::cout << "\033[2J\033[1;1H";
 }
 
 std::string format_field(const std::string &field)
@@ -77,14 +89,21 @@ std::string format_field(const std::string &field)
 
 void PhoneBook::print_contacts()
 {
+	std::stringstream	ss;
+	std::string		id_str;
+
 	std::cout << "Index     |First Name|Last Name |Nickname  |\n";
 	for (int i = 0; i < this->get_number_of_contacts(); i++)
 	{
-		std::cout << this->get_contact(i).get_id() << "|";
+		ss.str("");
+		ss << this->get_contact(i).get_id() + 1;
+		id_str = ss.str();
+
+		std::cout << format_field(id_str) << "|";
 		std::cout << format_field(this->get_contact(i).get_first_name()) << "|";
 		std::cout << format_field(this->get_contact(i).get_last_name()) << "|";
 		std::cout << format_field(this->get_contact(i).get_nickname()) << "|\n";
-	}	
+	}
 }
 
 void PhoneBook::search_contact()
@@ -95,6 +114,7 @@ void PhoneBook::search_contact()
 	this->print_contacts();
 	std::cout << "Enter the index of the contact to display: ";
 	std::cin >> index;
+	index--;
 	if (index < 0 || index >= this->get_number_of_contacts())
 	{
 		std::cout << "Invalid index.\n";

@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:34:56 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/04 17:32:56 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:07:49 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,9 @@ int	main(void)
 		if (cmd == "SEARCH")
 		    phonebook.search_contact();
 		if (cmd == "EXIT")
-		{
 			break ;
-		}
 		if (cmd != "ADD" && cmd != "SEARCH" && cmd != "EXIT")
-		{
 			std::cout << "Invalid command!\n";
-			std::cout << "Available commands: ADD, SEARCH, EXIT\n";
-		}
 	}
 	return (0);
 }

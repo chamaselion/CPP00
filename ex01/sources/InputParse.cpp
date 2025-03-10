@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:42:14 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/04 14:21:38 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:26:02 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int validate_number_string(const std::string &str)
 		std::cout << "Error: Input cannot be empty.\n";
 		return (1);
 	}
+	
 	i = 0;
 	while (str[i])
 	{
@@ -107,6 +108,7 @@ int ask_contact_info(std::string &fn, std::string &ln, std::string &n, std::stri
 	
 	while (state < 5)
 	{
+		std::cout << "\033[2J\033[1;1H";
 		while(1)
 		{
 			std::cout << prompt[state];
@@ -124,5 +126,5 @@ int ask_contact_info(std::string &fn, std::string &ln, std::string &n, std::stri
 		state++;
     }
 	fn = output[0]; ln = output[1]; n = output[2]; pn = output[3]; ds = output[4];
-	return (0);
+	return (std::cout << "\033[2J\033[1;1H" << "---------------\nContact added succesfully\n---------------\n", 0);
 }
