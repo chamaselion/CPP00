@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:27:25 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/10 15:40:02 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:46:07 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void Account::_displayTimestamp( void )
 	time_t current;
 	
 	std::time(&current);
-	std::strftime(time, sizeof(time), "%Y%m%d", std::localtime(&current));
-	std::cout << time;
+	std::strftime(time, sizeof(time), "%Y%m%d_%H%M%S", std::localtime(&current));
+	std::cout << "[" << time << "] ";
 }
