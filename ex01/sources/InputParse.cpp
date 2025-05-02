@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:42:14 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/10 12:26:02 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:09:33 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,17 @@ int ask_contact_info(std::string &fn, std::string &ln, std::string &n, std::stri
 		while(1)
 		{
 			std::cout << prompt[state];
-			std::cin >> temp;
+			if (!(std::cin >> temp))
+			{
+				std::cin.clear();
+				std::cin.ignore(32767, '\n');
+				std::cout << "Invalid input. Please enter a number.\n";
+				std::string	temp;
+				std::cout << "Press ENTER to continue\n";
+				std::getline(std::cin, temp);
+				std::cout << "\033[2J\033[1;1H";
+				return(0);
+			}
 			if (state <= 2 && validate_letter_string(temp) == 0)
 				break;
 			if (state == 3 && validate_number_string(temp) == 0)
