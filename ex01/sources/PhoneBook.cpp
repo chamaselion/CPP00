@@ -6,7 +6,7 @@
 /*   By: bszikora <bszikora@student.42helbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:32:14 by bszikora          #+#    #+#             */
-/*   Updated: 2025/03/10 12:20:16 by bszikora         ###   ########.fr       */
+/*   Updated: 2025/05/02 11:00:53 by bszikora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,19 +108,32 @@ void PhoneBook::print_contacts()
 
 void PhoneBook::search_contact()
 {
-	int index;
+	int		index;
 
 	std::cout << "\033[2J\033[1;1H";
 	this->print_contacts();
 	std::cout << "Enter the index of the contact to display: ";
-	std::cin >> index;
+	if (!(std::cin >> index))
+	{
+		std::cin.clear();
+		std::cin.ignore(32767, '\n');
+		std::cout << "Invalid input. Please enter a number.\n";
+		std::string	temp;
+		std::cout << "Press ENTER to continue\n";
+		std::getline(std::cin, temp);
+		std::cout << "\033[2J\033[1;1H";
+		return;
+	}
+	std::cin.ignore(32767, '\n');
 	index--;
 	if (index < 0 || index >= this->get_number_of_contacts())
 	{
 		std::cout << "Invalid index.\n";
-	}
-	else
-	{
-		this->print_contact(index);
-	}
+		std::string	temp;
+		std::cout << "Press ENTER to continue\n";
+		std::getline(std::cin, temp);
+		std::cout << "\033[2J\033[1;1H";
+    }
+    else
+        this->print_contact(index);
 }
